@@ -1,1 +1,15 @@
-{"name": "Jungle Klikspel", "short_name": "JungleGame", "start_url": "index.html", "display": "standalone", "background_color": "#14532d", "theme_color": "#14532d"}
+{
+  "name": "Jungle Klikspel",
+  "short_name": "JungleGame",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#14532d",
+  "theme_color": "#14532d",
+  "icons": [
+    {
+      "src": "jungle_background.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
