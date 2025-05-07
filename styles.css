@@ -1,5 +1,9 @@
-/* ================= BASIS ================= */
-:root { --green: rgba(20, 83, 45, 0.9); }
+/* ========= Kleuren & basis ========= */
+:root {
+  --green-dark: #14532d;
+  --green:      #1e7f52;
+  --yellow:     #ffd057;
+}
 
 * { box-sizing: border-box; }
 
@@ -7,73 +11,94 @@ body {
   margin: 0;
   min-height: 100vh;
 
-  /* FLEX: alles horizontaal gecentreerd */
+  /* Centraal uitgelijnd via flex */
   display: flex;
   flex-direction: column;
-  align-items: center;   /* horizontaal */
+  align-items: center;      /* horizontaal */
   background: url('jungle_background.png') center / cover fixed;
   font-family: 'Jua', sans-serif;
   color: #fff;
   text-align: center;
 }
 
+/* ========= Titel ========= */
 h1 {
-  margin: 24px 0 12px;
-  font-size: 48px;
-  text-shadow: 2px 2px 4px #000;
+  margin: 28px 0 14px;
+  font-size: 52px;
+  text-shadow: 3px 3px 6px #000;
 }
 
-/* ================= SCORE‑BALK ================= */
+/* ========= Score‑badge ========= */
+#info {
+  backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.35);
+  padding: 12px 18px;
+  border-radius: 14px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 #info span {
-  margin: 0 12px;
-  font-size: 1.2em;
+  font-size: 1.15em;
+  white-space: nowrap;
 }
 
-/* ================= GRID ================= */
+/* ========= Grid ========= */
 #game-container {
   display: grid;
   grid-template-columns: repeat(3, 110px);
   grid-template-rows: repeat(3, 110px);
-  gap: 12px;
-
-  /* absolut bewezen manier om horizontaal te centreren */
-  margin: 20px auto;
-  align-self: center;      /* fallback voor sommige browsers */
+  gap: 14px;
+  margin: 24px auto;
 }
 
 .cell {
-  background: var(--green);
-  border-radius: 12px;
+  background: rgba(0,0,0,0.4);
+  border: 2px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 64px;
+  font-size: 66px;
   cursor: pointer;
-  user-select: none;
-  transition: transform 0.15s;
+  transition: transform .12s;
 }
 
 .cell:active { transform: scale(0.9); }
 
 /* Pop‑animatie */
-.spawn { animation: pop 0.25s ease; }
+.spawn { animation: pop .25s ease; }
 @keyframes pop {
-  0%   { transform: scale(0.4); opacity: 0; }
-  100% { transform: scale(1);   opacity: 1; }
+  0%   { transform: scale(.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-/* ================= KNOPPEN ================= */
-#reset-btn, #mute-btn, #board-btn {
-  padding: 8px 18px;
-  margin: 12px 6px;
-  font-size: 1em;
+/* ========= Knoppen ========= */
+#controls {       /* wrap: zie stap 2 */
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+button {
+  padding: 10px 22px;
+  font-size: 1.05em;
   cursor: pointer;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--green) 0%, var(--yellow) 100%);
+  color: #1b1b1b;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  transition: transform .15s, box-shadow .15s;
 }
-#mute-btn.muted { opacity: 0.4; }
 
-/* ================= MODAL (Leaderboard) ================= */
+button:hover { transform: translateY(-2px); }
+button:active { transform: translateY(1px); box-shadow: 0 2px 4px rgba(0,0,0,0.4); }
+
+#mute-btn.muted { filter: grayscale(1); opacity: .6; }
+
+/* ========= Modal ========= */
 #modal {
   position: fixed;
   inset: 0;
@@ -86,14 +111,17 @@ h1 {
 #modal.hidden { display: none; }
 
 #modal-content {
-  background: var(--green);
-  padding: 20px;
-  border-radius: 12px;
-  width: 260px;
+  background: rgba(0,0,0,0.75);
+  border: 2px solid var(--yellow);
+  border-radius: 14px;
+  padding: 22px 26px;
+  width: 280px;
 }
 
-/* ================= PARTICLES ================= */
+#modal-content h2 { margin-top: 0; }
+
+/* ========= Particle‑effect ========= */
 @keyframes float {
   0%   { opacity: 1; transform: translate(-50%, 0); }
-  100% { opacity: 0; transform: translate(-50%, -80px); }
+  100% { opacity: 0; transform: translate(-50%, -90px); }
 }
