@@ -51,20 +51,33 @@ boardBtn.onclick  = () => { modal.classList.remove('hidden'); updateBoard(); };
 closeModal.onclick= () => modal.classList.add('hidden');
 
 function updateBoard() {
-  boardList.innerHTML = '<li>laden…</li>';
+  /* probeer Firebase */
   const q = query(ref(db,'scores'), orderByValue(), limitToLast(10));
   get(q).then(snap => {
-    const arr = [];
-    snap.forEach(c => arr.push([c.key,c.val()]));
-    arr.sort((a,b) => b[1]-a[1]);
-    boardList.innerHTML = '';
-    arr.forEach(([n,v])=>{
-      const li = document.createElement('li');
-      li.textContent = n + ': ' + v;
-      boardList.appendChild(li);
-    });
+    if (snap.exists()) {
+      const a = [];
+      snap.forEach(c => a.push([c.key, c.val()]));
+      a.sort((x,y) => y[1]-x[1]);
+      renderBoard(a);
+    } else {
+      /* fallback naar lokaal storage */
+      const local = localStorage.getItem('personalHigh') || 0;
+      renderBoard([['You', local]]);
+    }
+  }).catch(() => {
+    const local = localStorage.getItem('personalHigh') || 0;
+    renderBoard([['You', local]]);
   });
 }
+function renderBoard(arr){
+  boardList.innerHTML='';
+  arr.forEach(([n,v])=>{
+    const li=document.createElement('li');
+    li.textContent=n+': '+v;
+    boardList.appendChild(li);
+  });
+}
+
 
 /* ---------- Grid ---------- */
 const cont=document.getElementById('game-container');
