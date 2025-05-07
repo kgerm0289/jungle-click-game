@@ -1,19 +1,21 @@
 /* ---------- Kleuren & basis ---------- */
-:root {
-  --green: rgba(20, 83, 45, 0.9);
-}
+:root { --green: rgba(20, 83, 45, 0.9); }
 
 body {
   margin: 0;
+  min-height: 100vh;               /* vult volledige hoogte */
+  display: flex;                   /* flexbox → alles centreren */
+  flex-direction: column;
+  align-items: center;             /* horizontaal centreren */
+  justify-content: flex-start;     /* titel blijft bovenaan */
   background: url('jungle_background.png') center / cover fixed;
   font-family: 'Jua', sans-serif;
   color: #fff;
   text-align: center;
 }
 
-/* Titel */
 h1 {
-  margin: 20px 0;
+  margin: 20px 0 10px;
   font-size: 48px;
   text-shadow: 2px 2px 4px #000;
 }
@@ -24,13 +26,13 @@ h1 {
   font-size: 1.2em;
 }
 
-/* ---------- Grid (centraal uitgelijnd) ---------- */
+/* ---------- Grid ---------- */
 #game-container {
   display: grid;
   grid-template-columns: repeat(3, 110px);
   grid-template-rows: repeat(3, 110px);
   gap: 12px;
-  margin: 20px auto 0 auto; /* auto links & rechts → horizontaal centreren */
+  margin-top: 20px;        /* staat nu vanzelf gecentreerd door body‑flex */
 }
 
 .cell {
@@ -45,14 +47,10 @@ h1 {
   transition: transform 0.15s;
 }
 
-.cell:active {
-  transform: scale(0.9);
-}
+.cell:active { transform: scale(0.9); }
 
 /* Pop‑animatie bij verschijnen */
-.spawn {
-  animation: pop 0.25s ease;
-}
+.spawn { animation: pop 0.25s ease; }
 
 @keyframes pop {
   0%   { transform: scale(0.4); opacity: 0; }
@@ -71,9 +69,7 @@ h1 {
   border-radius: 10px;
 }
 
-#mute-btn.muted {
-  opacity: 0.4;
-}
+#mute-btn.muted { opacity: 0.4; }
 
 /* ---------- Leaderboard‑modal ---------- */
 #modal {
@@ -94,7 +90,7 @@ h1 {
   width: 260px;
 }
 
-/* Particle‑effect (“+5”) */
+/* Particle‑effect (“+ / ‑”) */
 @keyframes float {
   0%   { opacity: 1; transform: translate(-50%, 0); }
   100% { opacity: 0; transform: translate(-50%, -80px); }
