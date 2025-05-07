@@ -32,7 +32,7 @@ h1 {
   grid-template-columns: repeat(3, 110px);
   grid-template-rows: repeat(3, 110px);
   gap: 12px;
-  margin-top: 20px;        /* staat nu vanzelf gecentreerd door body‑flex */
+  margin: 20px auto;        /* staat nu vanzelf gecentreerd door body‑flex */
 }
 
 .cell {
