@@ -1,13 +1,16 @@
-/* ---------- Kleuren & basis ---------- */
+/* ================= BASIS ================= */
 :root { --green: rgba(20, 83, 45, 0.9); }
+
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  min-height: 100vh;               /* vult volledige hoogte */
-  display: flex;                   /* flexbox → alles centreren */
+  min-height: 100vh;
+
+  /* FLEX: alles horizontaal gecentreerd */
+  display: flex;
   flex-direction: column;
-  align-items: center;             /* horizontaal centreren */
-  justify-content: flex-start;     /* titel blijft bovenaan */
+  align-items: center;   /* horizontaal */
   background: url('jungle_background.png') center / cover fixed;
   font-family: 'Jua', sans-serif;
   color: #fff;
@@ -15,24 +18,27 @@ body {
 }
 
 h1 {
-  margin: 20px 0 10px;
+  margin: 24px 0 12px;
   font-size: 48px;
   text-shadow: 2px 2px 4px #000;
 }
 
-/* Score‑balk */
+/* ================= SCORE‑BALK ================= */
 #info span {
   margin: 0 12px;
   font-size: 1.2em;
 }
 
-/* ---------- Grid ---------- */
+/* ================= GRID ================= */
 #game-container {
   display: grid;
   grid-template-columns: repeat(3, 110px);
   grid-template-rows: repeat(3, 110px);
   gap: 12px;
-  margin: 20px auto;        /* staat nu vanzelf gecentreerd door body‑flex */
+
+  /* absolut bewezen manier om horizontaal te centreren */
+  margin: 20px auto;
+  align-self: center;      /* fallback voor sommige browsers */
 }
 
 .cell {
@@ -49,38 +55,34 @@ h1 {
 
 .cell:active { transform: scale(0.9); }
 
-/* Pop‑animatie bij verschijnen */
+/* Pop‑animatie */
 .spawn { animation: pop 0.25s ease; }
-
 @keyframes pop {
   0%   { transform: scale(0.4); opacity: 0; }
   100% { transform: scale(1);   opacity: 1; }
 }
 
-/* ---------- Knoppen ---------- */
-#reset-btn,
-#mute-btn,
-#board-btn {
+/* ================= KNOPPEN ================= */
+#reset-btn, #mute-btn, #board-btn {
   padding: 8px 18px;
-  margin: 10px 6px;
+  margin: 12px 6px;
   font-size: 1em;
   cursor: pointer;
   border: none;
   border-radius: 10px;
 }
-
 #mute-btn.muted { opacity: 0.4; }
 
-/* ---------- Leaderboard‑modal ---------- */
+/* ================= MODAL (Leaderboard) ================= */
 #modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 50;
 }
-
 #modal.hidden { display: none; }
 
 #modal-content {
@@ -90,7 +92,7 @@ h1 {
   width: 260px;
 }
 
-/* Particle‑effect (“+ / ‑”) */
+/* ================= PARTICLES ================= */
 @keyframes float {
   0%   { opacity: 1; transform: translate(-50%, 0); }
   100% { opacity: 0; transform: translate(-50%, -80px); }
