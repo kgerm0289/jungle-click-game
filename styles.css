@@ -1,20 +1,91 @@
-:root { --green: rgba(20,83,45,0.9); }
+:root { --green: rgba(20, 83, 45, 0.9); }
+
+/* Achtergrond + basisopmaak */
 body {
-  margin:0; padding:0;
-  background:url('jungle_background.png') no-repeat center center fixed;
-  background-size:cover;
-  font-family:'Jua',sans-serif;
-  color:#fff; text-align:center;
+  margin: 0;
+  background: url('jungle_background.png') center / cover fixed;
+  font-family: 'Jua', sans-serif;
+  color: #fff;
+  text-align: center;
 }
-h1{font-size:48px;margin:20px 0;text-shadow:2px 2px 4px #000;}
-#info span{margin:0 10px;font-size:1.2em}
-#game-container{display:grid;grid-template-columns:repeat(3,110px);grid-template-rows:repeat(3,110px);gap:12px;margin:20px auto;}
-.cell{background:var(--green);border-radius:12px;display:flex;justify-content:center;align-items:center;font-size:64px;cursor:pointer;user-select:none;transition:transform .15s;}
-.cell:active{transform:scale(0.9);}
-.spawn{animation:pop .25s ease;}
-@keyframes pop{0%{transform:scale(.4);opacity:0;}100%{transform:scale(1);opacity:1;}}
-#reset-btn,#mute-btn,#board-btn{padding:8px 18px;margin:10px 6px;font-size:1em;cursor:pointer;border:none;border-radius:10px;}
-#mute-btn.muted{opacity:0.4}
-#modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;justify-content:center;align-items:center;}
-#modal.hidden{display:none;}
-#modal-content{background:var(--green);padding:20px;border-radius:12px;width:260px;}
+
+h1 {
+  margin: 20px 0;
+  font-size: 48px;
+  text-shadow: 2px 2px 4px #000;
+}
+
+/* Score‑balk */
+#info span {
+  margin: 0 12px;
+  font-size: 1.2em;
+}
+
+/* Grid */
+#game-container {
+  display: grid;
+  grid-template-columns: repeat(3, 110px);
+  grid-template-rows: repeat(3, 110px);
+  gap: 12px;
+  margin: 20px auto;
+}
+
+.cell {
+  background: var(--green);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 64px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s;
+}
+
+.cell:active { transform: scale(0.9); }
+
+/* Pop‑animatie bij verschijnen */
+.spawn { animation: pop 0.25s ease; }
+@keyframes pop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* Knoppen */
+#reset-btn,
+#mute-btn,
+#board-btn {
+  padding: 8px 18px;
+  margin: 10px 6px;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+
+#mute-btn.muted { opacity: 0.4; }
+
+/* Leaderboard‑modal */
+#modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal.hidden { display: none; }
+
+#modal-content {
+  background: var(--green);
+  padding: 20px;
+  border-radius: 12px;
+  width: 260px;
+}
+
+/* Particle‑effect (“+5”) */
+@keyframes float {
+  0%   { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -80px); }
+}
