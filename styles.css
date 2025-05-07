@@ -11,40 +11,43 @@ body {
   margin: 0;
   min-height: 100vh;
 
-  /* Centraal uitgelijnd via flex */
+  /* FLEX voor centreren */
   display: flex;
   flex-direction: column;
-  align-items: center;      /* horizontaal */
+  align-items: center;
   background: url('jungle_background.png') center / cover fixed;
   font-family: 'Jua', sans-serif;
   color: #fff;
   text-align: center;
 }
 
-/* ========= Titel ========= */
 h1 {
   margin: 28px 0 14px;
   font-size: 52px;
   text-shadow: 3px 3px 6px #000;
 }
 
-/* ========= Score‑badge ========= */
-#info {
-  backdrop-filter: blur(4px);
-  background: rgba(0,0,0,0.35);
-  padding: 12px 18px;
-  border-radius: 14px;
+/* ========= SCORE‑KAART ========= */
+.card {
+  backdrop-filter: blur(5px);
+  background: rgba(0,0,0,0.45);
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 16px 24px;
+  width: 240px;
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 6px;
 }
-
-#info span {
+.stat {
+  display: flex;
+  justify-content: space-between;
   font-size: 1.15em;
-  white-space: nowrap;
 }
+.stat span   { opacity: .8;  }
+.stat strong { min-width: 70px; text-align: right; }
 
-/* ========= Grid ========= */
+/* ========= GRID ========= */
 #game-container {
   display: grid;
   grid-template-columns: repeat(3, 110px);
@@ -64,18 +67,17 @@ h1 {
   cursor: pointer;
   transition: transform .12s;
 }
-
 .cell:active { transform: scale(0.9); }
 
 /* Pop‑animatie */
 .spawn { animation: pop .25s ease; }
 @keyframes pop {
   0%   { transform: scale(.4); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1);  opacity: 1; }
 }
 
-/* ========= Knoppen ========= */
-#controls {       /* wrap: zie stap 2 */
+/* ========= KNOPPEN ========= */
+#controls {
   display: flex;
   gap: 10px;
   margin-top: 4px;
@@ -92,13 +94,11 @@ button {
   box-shadow: 0 4px 8px rgba(0,0,0,0.4);
   transition: transform .15s, box-shadow .15s;
 }
-
-button:hover { transform: translateY(-2px); }
+button:hover  { transform: translateY(-2px); }
 button:active { transform: translateY(1px); box-shadow: 0 2px 4px rgba(0,0,0,0.4); }
-
 #mute-btn.muted { filter: grayscale(1); opacity: .6; }
 
-/* ========= Modal ========= */
+/* ========= MODAL ========= */
 #modal {
   position: fixed;
   inset: 0;
@@ -117,7 +117,6 @@ button:active { transform: translateY(1px); box-shadow: 0 2px 4px rgba(0,0,0,0.4
   padding: 22px 26px;
   width: 280px;
 }
-
 #modal-content h2 { margin-top: 0; }
 
 /* ========= Particle‑effect ========= */
