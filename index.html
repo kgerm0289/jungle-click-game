@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jungle Klikspel</title>
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jungle Klikspel</title>
+
+  <!-- Speels Google‑font -->
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<h1>Jungle Klikspel</h1>
+  <h1>Jungle Klikspel</h1>
 
-<div id="auth">
-  <span id="user-info"></span>
-</div>
-
-<div id="info">
-  <span>Score: <span id="score">0</span></span>
-  <span>Tijd: <span id="time">30</span>s</span>
-  <span>Persoonlijk record: <span id="personal">0</span></span>
-  <span>Globaal record: <span id="global">0</span></span>
-</div>
-
-<div id="game-container"></div>
-
-<button id="reset-btn">Herstarten</button>
-<button id="mute-btn">🔈</button>
-<button id="board-btn">Leaderboard</button>
-
-<!-- Leaderboard modal -->
-<div id="modal" class="hidden">
-  <div id="modal-content">
-    <h2>Top 10 Scores</h2>
-    <ol id="board-list"></ol>
-    <button id="close-modal">Sluiten</button>
+  <!-- Score‑info (geen login meer nodig) -->
+  <div id="info">
+    <span>Score: <span id="score">0</span></span>
+    <span>Tijd: <span id="time">30</span>s</span>
+    <span>Persoonlijk record: <span id="personal">0</span></span>
+    <span>Globaal record: <span id="global">0</span></span>
   </div>
-</div>
 
-<!-- Audio -->
-<audio id="ambient" src="jungle-ambient.mp3" loop preload="auto"></audio>
-<audio id="click-sound" src="click-sound.mp3" preload="auto"></audio>
-<audio id="error-sound" src="error-sound.mp3" preload="auto"></audio>
+  <div id="game-container"></div>
 
-<script type="module" src="app.js"></script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
-}
-</script>
+  <button id="reset-btn">Herstarten</button>
+  <button id="mute-btn">🔈</button>
+  <button id="board-btn">Leaderboard</button>
+
+  <!-- Leaderboard‑modal -->
+  <div id="modal" class="hidden">
+    <div id="modal-content">
+      <h2>Top 10 Scores</h2>
+      <ol id="board-list"></ol>
+      <button id="close-modal">Sluiten</button>
+    </div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="ambient" src="jungle-ambient.mp3" loop preload="auto"></audio>
+  <audio id="click-sound" src="click-sound.mp3" preload="auto"></audio>
+  <audio id="error-sound" src="error-sound.mp3" preload="auto"></audio>
+
+  <script type="module" src="app.js"></script>
+  <script>
+    /* Service‑worker voor PWA */
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
 </body>
 </html>
