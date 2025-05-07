@@ -5,33 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jungle Klikspel</title>
 
-  <!-- Speels Google‑font -->
+  <!-- Google‑font -->
   <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
+
+  <!-- PWA + CSS -->
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <h1>Jungle Klikspel</h1>
 
-  <!-- Score‑info (geen login meer nodig) -->
-<div id="info">
-  <span>Score: <span id="score">0</span></span>
-  <span>Tijd: <span id="time">30</span>s</span>
-  <span>Streak: <span id="streak">0</span> dagen</span>
-  <span>Pers. record: <span id="personal">0</span></span>
-  <span>Globaal record: <span id="global">0</span></span>
-</div>
+  <!-- ░▒ SCORE‑KAART ▒░ -->
+  <div id="info" class="card">
+    <div class="stat"><span>🎯 Score:</span>       <strong id="score">0</strong></div>
+    <div class="stat"><span>⏱ Tijd:</span>        <strong id="time">30</strong>s</div>
+    <div class="stat"><span>🔥 Streak:</span>      <strong id="streak">0</strong> dagen</div>
+    <div class="stat"><span>🏅 Persoonlijk:</span> <strong id="personal">0</strong></div>
+    <div class="stat"><span>🌍 Globaal:</span>     <strong id="global">0</strong></div>
+  </div>
 
+  <!-- ░▒ GRID ▒░ -->
   <div id="game-container"></div>
 
-<div id="controls">
-  <button id="reset-btn">Herstarten</button>
-  <button id="mute-btn">🔈</button>
-  <button id="board-btn">Leaderboard</button>
-</div>
+  <!-- ░▒ KNOPPEN ▒░ -->
+  <div id="controls">
+    <button id="reset-btn">Herstarten</button>
+    <button id="mute-btn">🔈</button>
+    <button id="board-btn">Leaderboard</button>
+  </div>
 
-
-  <!-- Leaderboard‑modal -->
+  <!-- ░▒ LEADERBOARD‑MODAL ▒░ -->
   <div id="modal" class="hidden">
     <div id="modal-content">
       <h2>Top 10 Scores</h2>
@@ -40,14 +43,14 @@
     </div>
   </div>
 
-  <!-- Audio -->
-  <audio id="ambient" src="jungle-ambient.mp3" loop preload="auto"></audio>
-  <audio id="click-sound" src="click-sound.mp3" preload="auto"></audio>
-  <audio id="error-sound" src="error-sound.mp3" preload="auto"></audio>
+  <!-- ░▒ AUDIO ▒░ -->
+  <audio id="ambient"    src="jungle-ambient.mp3" loop preload="auto"></audio>
+  <audio id="click-sound" src="click-sound.mp3"   preload="auto"></audio>
+  <audio id="error-sound" src="error-sound.mp3"   preload="auto"></audio>
 
+  <!-- ░▒ SCRIPT ▒░ -->
   <script type="module" src="app.js"></script>
   <script>
-    /* Service‑worker voor PWA */
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js');
     }
