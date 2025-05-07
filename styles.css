@@ -11,7 +11,6 @@ body {
   margin: 0;
   min-height: 100vh;
 
-  /* FLEX voor centreren */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +26,7 @@ h1 {
   text-shadow: 3px 3px 6px #000;
 }
 
-/* ========= SCORE‑KAART ========= */
+/* ========= Score‑kaart ========= */
 .card {
   backdrop-filter: blur(5px);
   background: rgba(0,0,0,0.45);
@@ -39,15 +38,11 @@ h1 {
   flex-direction: column;
   gap: 6px;
 }
-.stat {
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.15em;
-}
-.stat span   { opacity: .8;  }
+.stat { display: flex; justify-content: space-between; font-size: 1.15em; }
+.stat span   { opacity: .8; }
 .stat strong { min-width: 70px; text-align: right; }
 
-/* ========= GRID ========= */
+/* ========= Grid ========= */
 #game-container {
   display: grid;
   grid-template-columns: repeat(3, 110px);
@@ -76,21 +71,19 @@ h1 {
   100% { transform: scale(1);  opacity: 1; }
 }
 
-/* ========= KNOPPEN ========= */
-#controls {
-  display: flex;
-  gap: 10px;
-  margin-top: 4px;
-}
+/* ========= Knoppen ========= */
+#controls { display: flex; gap: 10px; margin-top: 4px; }
 
 button {
-  padding: 10px 22px;
-  font-size: 1.05em;
+  font-family: 'Bangers', cursive;      /* <-- jungle‑stijl */
+  padding: 10px 24px;
+  font-size: 1.15em;
   cursor: pointer;
   border: none;
   border-radius: 12px;
   background: linear-gradient(145deg, var(--green) 0%, var(--yellow) 100%);
   color: #1b1b1b;
+  letter-spacing: .5px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.4);
   transition: transform .15s, box-shadow .15s;
 }
@@ -98,7 +91,7 @@ button:hover  { transform: translateY(-2px); }
 button:active { transform: translateY(1px); box-shadow: 0 2px 4px rgba(0,0,0,0.4); }
 #mute-btn.muted { filter: grayscale(1); opacity: .6; }
 
-/* ========= MODAL ========= */
+/* ========= Modal ========= */
 #modal {
   position: fixed;
   inset: 0;
@@ -115,11 +108,12 @@ button:active { transform: translateY(1px); box-shadow: 0 2px 4px rgba(0,0,0,0.4
   border: 2px solid var(--yellow);
   border-radius: 14px;
   padding: 22px 26px;
-  width: 280px;
+  width: 300px;
+  text-align: center;             /* lijst centreren */
 }
 #modal-content h2 { margin-top: 0; }
 
-/* ========= Particle‑effect ========= */
+/* ========= Particle ========= */
 @keyframes float {
   0%   { opacity: 1; transform: translate(-50%, 0); }
   100% { opacity: 0; transform: translate(-50%, -90px); }
