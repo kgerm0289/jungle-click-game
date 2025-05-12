@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jungle Klikspel</title>
+  <title>Jungle Klikspel — v3</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Jua&family=Bangers&display=swap" rel="stylesheet"/>
@@ -15,22 +15,37 @@
 
   <!-- Score‑kaart -->
   <div id="info" class="card">
-    <div class="stat"><span>🎯 Score:</span>       <strong id="score">0</strong></div>
-    <div class="stat"><span>⏱ Tijd:</span>        <strong id="time">30</strong>s</div>
-    <div class="stat"><span>🔥 Streak:</span>      <strong id="streak">0</strong> dagen</div>
-    <div class="stat"><span>🏅 Persoonlijk:</span> <strong id="personal">0</strong></div>
-    <div class="stat"><span>🌍 Globaal:</span>     <strong id="global">0</strong></div>
+    <div class="stat"><span>🎯 Score:</span>       <strong id="score">0</strong></div>
+    <div class="stat"><span>⏱ Tijd:</span>        <strong id="time">30</strong>s</div>
+    <div class="stat"><span>🔥 Streak:</span>      <strong id="streak">0</strong> dagen</div>
+    <div class="stat"><span>🏅 Persoonlijk:</span> <strong id="personal">0</strong></div>
+    <div class="stat"><span>🌍 Globaal:</span>     <strong id="global">0</strong></div>
   </div>
 
   <!-- Grid -->
   <div id="game-container"></div>
 
-  <!-- Knoppen -->
+  <!-- Knoppengroep -->
   <div id="controls">
     <button id="reset-btn">Herstarten</button>
     <button id="mute-btn">🔈</button>
+    <button id="theme-btn">Thema</button>
     <button id="board-btn">Leaderboard</button>
+    <button id="stats-btn">Stats</button>
   </div>
+
+  <!-- Slider voor toegankelijkheid -->
+  <label id="zoomWrap">
+    Tekst grootte 
+    <input type="range" id="zoomRange" min="1" max="1.6" step="0.1" value="1">
+  </label>
+
+  <!-- Muziek‑switch -->
+  <select id="trackSel">
+    <option value="jungle-ambient.mp3">Jungle Ambient</option>
+    <option value="jungle-drums.mp3">Jungle Drums</option>
+    <option value="night-forest.mp3">Night Forest</option>
+  </select>
 
   <!-- Leaderboard‑modal -->
   <div id="modal" class="hidden">
@@ -41,16 +56,33 @@
     </div>
   </div>
 
+  <!-- Stats‑modal -->
+  <div id="stats" class="hidden">
+    <div id="stats-content">
+      <h2>Spel‑statistieken</h2>
+      <ul id="stat-list"></ul>
+      <button id="close-stats">Sluiten</button>
+    </div>
+  </div>
+
+  <!-- Achievements‑modal -->
+  <div id="achv" class="hidden">
+    <div id="achv-content">
+      <h2>Badges</h2>
+      <ul id="achv-list"></ul>
+      <button id="close-achv">Sluiten</button>
+    </div>
+  </div>
+
   <!-- Audio -->
   <audio id="ambient"    src="jungle-ambient.mp3" loop preload="auto"></audio>
   <audio id="click-sound" src="click-sound.mp3"   preload="auto"></audio>
   <audio id="error-sound" src="error-sound.mp3"   preload="auto"></audio>
 
+  <!-- Script -->
   <script type="module" src="app.js"></script>
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
-    }
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('sw.js'); }
   </script>
 </body>
 </html>
